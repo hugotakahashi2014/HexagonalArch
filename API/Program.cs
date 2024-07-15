@@ -3,8 +3,13 @@ using Domain.Entities;
 using Infra.Data;
 using Infra.Data.Context;
 using Infra.Email;
+using MeiosPagamentoApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+//Add configuration
+IConfiguration config = builder.Configuration;
+builder.Services.Configure<ConfigurationFiserv>(config.GetSection("HttpAcquirerConnections:Fiserv"));
+//builder.Services.Configure<ConfigurationCielo>(config.GetSection("HttpAcquirerConnections:Cielo"));
 
 // Add services to the container.
 
